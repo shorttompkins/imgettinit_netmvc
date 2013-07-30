@@ -1,0 +1,47 @@
+﻿<script id="gameDetailsTemplate" type="text/template">
+    <section id="gameTitle" style="background-image: url(/content/assets/backgrounds/<%= gameId %>.jpg);">
+        <h2>&nbsp;<%= title %></h2>
+    </section>
+    <div style="padding: 1%;">
+        <div style="float: right;">
+        <% for(var c=0; c<consoles.length; c++){ %>
+            <span class="console-badge c<%= consoles[c].consoleId%>"><%= consoles[c].abbrev %></span>
+        <% } %>
+        </div>
+        <b>Release Date:</b> <%= moment(releaseDate).format("MMM Do, YYYY") %> (<%= moment(releaseDate).fromNow()%>)
+    </div>
+
+    <div id="gameDetailsLoader" style="text-align: center;">
+        <img src="http://assets3.notonthehighstreet.com/images/shared/icons/ajax-loader.gif?1362151400" />
+    </div>
+    
+    <div id="gameDetailsFull" class="hidden" style="padding: 1%;">
+        <div style="background-color: #f5f5f5; padding: 1%; border: solid 1px #c1c1c1;">
+            <%= description %>
+        </div>
+        <br />
+        <div style="float: right; width: 49%; padding: 0 1% 0 1%; font-size: .9em; position: relative;">
+            <h3>&nbsp;</h3>
+            <div id="gettinButton"></div>
+        </div>
+        <div style="float: left; width: 49%">
+            <h3>Preorder Bonuses:</h3>
+            <img src="/content/images/vendors/vendor_az.jpg" style="border: solid 1px #353535;" /> 
+            <img src="/content/images/vendors/vendor_bb.jpg" style="border: solid 1px #353535;" /> 
+            <img src="/content/images/vendors/vendor_tr.jpg" style="border: solid 1px #353535;" /> 
+            <img src="/content/images/vendors/vendor_wm.jpg" style="border: solid 1px #353535;" />
+            <br />
+        </div>
+
+        <div class="clear"></div>
+        
+        <br />
+        <h3>Friends:</h3>
+        <div id="divFriends" style=" height: 60px; overflow-x: scroll;"></div>
+
+        <br />
+        <h3>Upcoming Games:</h3>
+        <div id="divUpcoming" style=" height: 150px; overflow-x: scroll;"></div>  
+    </div>      
+    <div class="clear"></div>   
+</script>

@@ -1,0 +1,110 @@
+﻿@using System.Web.Optimization
+@{
+    App.Model.User isLoggedIn = null;
+}
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!-- <html lang="en"> -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Website Title</title>
+    <link href="~/Content/reset.css" rel="stylesheet" media="screen" type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href="~/Content/styles.css" rel="stylesheet" media="screen" type='text/css' />
+    <script src="~/Scripts/lib/modernizr.custom.js"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="fixed">
+            <div style="padding: 10px; float: right; display: inline; text-align: right;">
+                @if(isLoggedIn != null){
+                <div style="font-size: .8em; line-height: 1.6em;">
+                    <a href="#" id="feed" style="margin-left: 10px; float: right;"><img src="/content/images/icon_activity_new.jpg" /></a>
+                    Logged in as:<br />
+                    <b>@isLoggedIn.Username</b> <a href="/reg/logout"><img src="/content/images/icon_logout.jpg" alt="Logout?" /></a>
+                </div>    
+                }else{
+                    <div style="font-size: .8em; line-height: 1.6em;">
+                        <span style="margin-left: 10px; float: right;"><a href="/reg/facebooklogin"><img src="/content/images/facebook.png" alt="Login w/ Facebook" style="vertical-align: middle;" /></a> &nbsp; <a href="/reg/twitterlogin"><img src="/content/images/twitter.png" alt="Login w/ Twitter" style="vertical-align: middle;" /></a></span>
+                        Login<br />Using:
+                    </div>
+                }
+            </div>
+            <h1>I'm Gettin! It</h1> 
+            <br /><br />
+            <!--Show: --><select id="filter_show" style="height: 26px;">
+                    <option value="">All Games</option>
+                    <option value="popular">Most Popular</option>
+                    <option value="mine">My Games</option>
+                    <option value="friends">Friends Games</option>
+                    <option value="both">Mine & My Friends</option>
+                    </select>
+
+            &nbsp;
+
+            <!--When: --><select id="filter_when" style="height: 26px;">
+                    <option value="">All Unreleased</option>
+                    <option value="2w">Within 2 Weeks</option>
+                    <option value="2m">Within 2 Months</option>
+                    <option value="3m">Within 3 Months</option>
+                    <option value="6m">Within 6 Months</option>
+                    <option value="1y">Within 1 Year</option>
+                    </select>
+
+            &nbsp;
+
+            <!--Console: --><select id="filter_console" style="height: 26px;">
+                        <option value="0">All Consoles</option>
+                        <option value="1">360</option>
+                        <option value="2">PS3</option>
+                        <option value="7">PSVita</option>
+                        <option value="5">PC</option>
+                        <option value="4">WiiU</option>
+                        <option value="3">Wii</option>
+                        <option value="6">3DS</option>
+                        </select>
+            &nbsp; 
+
+            <!--Sort: --><select id="filter_sort" style="height: 26px;">
+                    <option value="">Release &and;</option>
+                    <option value="desc">Release &or;</option>
+                    <option value="az">Title &and;</option>
+                    <option value="za">Title &or;</option>
+                    </select>
+            
+            &nbsp; 
+
+            <!--Box Size: --><select id="toggle_boxsize" style="height: 26px;">
+                        <option value="large">Large</option>
+                        <option value="medium">Medium</option>
+                        <option value="small">Small</option>
+                        </select>
+
+            &nbsp; -  &nbsp; 
+
+            <input type="text" id="search" placeholder="Search..." /> <span id="search_clear">[<a href="#">clear</a>]</span>
+
+        </div>
+    </div>
+        
+    <div id="app"></div>
+
+    @RenderPage("Views/game.cshtml")
+    @RenderPage("Views/gameDetails.cshtml")
+
+    <div id="footer">
+        <div class="fixed">
+        &copy;Copyright 2012 Forward Red, LLC | All Rights Reserved.
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="~/Scripts/lib/moment.min.js"></script>
+    <script data-main="/Scripts/main" src="~/Scripts/lib/require.js"></script>
+</body>
+</html>

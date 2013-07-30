@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>require-js</id>
+    <version>2.0.4</version>
+    <title>require.js</title>
+    <authors>James Burke</authors>
+    <owners>James Burke</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments, like Rhino and Node. Using a modular script loader like RequireJS will improve the speed and quality of your code. Note: this package contains only require.js file.</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>requirejs require.js</tags>
+    <references />
+  </metadata>
+</package>

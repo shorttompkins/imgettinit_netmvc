@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>System.Web.Optimization</id>
+    <version>1.0.0.1</version>
+    <title>System.Web.Optimization</title>
+    <authors>Yibeltal</authors>
+    <owners>Yibeltal</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/weboptimization_1_eula_ENU.htm</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>ASP.NET Optimization introduces a way to bundle and optimize css/js files.</description>
+    <tags>MVC, MVC4, Microsoft AspNet optimization bundling minification, System Web Optimization</tags>
+    <dependencies>
+      <dependency id="Microsoft.Web.Infrastructure" version="1.0.0" />
+      <dependency id="WebGrease" version="1.1.0" />
+    </dependencies>
+    <references>
+      <reference file="System.Web.Optimization.dll" />
+    </references>
+  </metadata>
+</package>

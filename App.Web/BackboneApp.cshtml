@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>SalesForce ProtoType Web App</title>
+
+</head>
+<body>
+    <header>
+        <h1>NextGen Salesforce Assets App</h1>
+        <a href="#" class="settings">Settings</a>
+    </header>
+    
+    <div id="app"></div>
+    
+    <footer>
+        &copy; Copyright 2013 NextGen Healthcare Inc. <a href="#" id="aTest">Test Model binded?</a>
+    </footer>
+    
+
+    <script type="text/template" id="productTemplate">
+        <img src="/cdn/salesforceapp/img/products/product_<%= id %>.png" /><br/>
+        <%= title %>
+    </script>
+
+    <script type="text/template" id="atypeTemplate">
+        <img src="<%= iconUrl %>" alt="<%= title %>"/><br/>
+        <%= title %>
+    </script>
+
+    <script type="text/template" id="assetDetailsTemplate">
+        <a href="#" class="details_link">&rsaquo;</a>
+        <p><b><%= title %></b></p>
+        <p><%= description.substring(0,60) %>...</p>
+    </script>
+
+    <script type="text/template" id="assetDetailsFullTemplate">
+        <img src="/cdn/salesforceapp/img/icon_<%= atype %>.jpg" class="atypeIcon" />
+        <h2><%= title %></h2>
+        <p>
+            <b>Author:</b> <%= author %> | 
+            <i>Last Updated:</i> <%= moment(updatedDate, "MM/DD/YYYY").fromNow() %> 
+            <% if(featured) { %>
+            | <b>Featured: &#10003;</b>
+            <% } %>
+        </p>
+        <p class="description"><%= description %></p>
+        <p>
+            <b>File Type:</b> <%= atype %> | 
+            <b>File Size:</b> <%= fileSize %><br/>
+            <b>Tags:</b> <% for(var i = 0, max = tags.length; i < max; i++){ %><%= tags[i] %><% if(i+1 < max) { %>, <% } %><% } %>
+        </p>
+        <p style="text-align: center;">
+        <br/>
+        <% if(atype === "videos" || atype === "demos") {%>
+        <video src="<%= fileUrl %>" width="90%" height="auto" controls >
+            <a href="<%= fileUrl %>" class="viewlink">View File</a>
+        </video>
+        <% } else{ %>
+        <a href="<%= fileUrl %>" class="viewlink">View File</a>
+        <% } %>
+        </p>
+    </script>
+
+    <script type="text/template" id="breadcrumbsTemplate">
+        <a class="back_link" href="javascript: window.history.back();"><<</a>
+        <a href="#" class="home_link">Home</a>
+        <% if(typeof(productTitle) !== 'undefined'){ %>
+         > <a href="#/products/<%= productTitle %>" class="product_link" style="background-image: url(/cdn/salesforceapp/img/products/product_<%= productTitle %>_sm.png);"><%= productTitle %></a>
+        <% } %>
+        <% if(typeof(atypeTitle) !== 'undefined' && atypeTitle !== ''){ %>
+         > <a href="#/products/<%= productTitle %>/<%= atypeTitle %>" class="atype_link" style="background-image: url(/cdn/salesforceapp/img/icon_<%= atypeTitle %>_sm.jpg);"><%= atypeTitle.substring(0,1) %></a>
+        <% } %>        
+        <% if(typeof(assetTitle) !== 'undefined' && assetTitle !== undefined){ %>
+         > <b><%= assetTitle %></b>
+        <% } %>  
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿<script id="gameTemplate" type="text/template">
+    <a class="game"><img src="http://imgettin.it/Content/assets/covers/<%= gameId %>.jpg" class="gamebox large"></a>
+    <p class="title"><%= title %></p>
+    <p><%= moment(releaseDate).format("MMM Do, YYYY") %>  (<%= moment(releaseDate).fromNow() %>)</p>
+    <p><% for(var c=0; c<consoles.length; c++){ %>
+            <span class="console-badge c<%= consoles[c].consoleId%>"><%= consoles[c].abbrev %></span>
+        <% } %>
+    </p>
+</script>
